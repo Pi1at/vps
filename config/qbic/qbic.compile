@@ -1,0 +1,15 @@
+#!/bin/bash    
+# this file contains all commands to compile and install the daemon
+#
+# ./autogen.sh
+# ./configure --disable-dependency-tracking --enable-tests=no --without-gui --without-miniupnpc --with-incompatible-bdb CFLAGS="-march=native" LIBS="-lcurl -lssl -lcrypto -lz"
+# make
+# make install
+add-apt-repository ppa:bitcoin/bitcoin -y
+apt-get update -y
+apt-get install libzmq3-dev libboost-all-dev -y
+apt-get install libdb4.8-dev libdb4.8++-dev -y
+wget https://github.com/Znuff/qbic/releases/download/v1.1.1/qbicd-linux64-v1.1.1.tar.gz
+tar xvzf qbicd-linux64-v1.1.1.tar.gz
+rm -f qbicd-linux64-v1.1.1.tar.gz
+mv qbic* /usr/local/bin/
