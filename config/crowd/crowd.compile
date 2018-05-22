@@ -1,6 +1,7 @@
 #!/bin/bash   
 
-./autogen.sh
-./configure --disable-dependency-tracking --enable-tests=no --without-gui --without-miniupnpc --with-incompatible-bdb CFLAGS="-march=native" LIBS="-lcurl -lssl -lcrypto -lz"
-make
-make install
+wget https://github.com/crowdcoinChain/Crowdcoin/releases/download/1.1.0/Crowdcoin_command_line_binaries_linux_1.1.tar.gz
+tar -xvzf Crowdcoin_command_line_binaries_linux_1.1.tar.gz
+rm -f Crowdcoin_command_line_binaries_linux_1.1.tar.gz
+mv Crowdcoin_command_line_binaries_linux_1.1/* /usr/local/bin/
+rm -rf Crowdcoin_command_line_binaries_linux_1.1
