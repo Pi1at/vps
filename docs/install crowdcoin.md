@@ -1,3 +1,4 @@
+```fix
 Pre-requisites:
 1. new VPS Ubuntu 16.04 (DON'T TRY THIS SCRIPT WITH OTHER MASTERNODE COINS INSTALLED or you will accept unpredictable results)
 2. VPS IP Address
@@ -5,6 +6,7 @@ Pre-requisites:
 to get the masternode private key and the TxID and TxIndex
 
 Please copy and paste (or type) everything exactly as written behind "type:" to the end of the line.
+
 Step 0) Type: apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y && reboot
 		if prompted "tools.conf (Y/I/N/O/D/Z) [default=N] ?" just press enter
 Step 1) Type: git clone https://github.com/KingSlayerMN/vps.git && cd vps
@@ -39,3 +41,4 @@ Wait until "crc1 mnsync status" output is like
 
 Continue with the official setup guide at page 6 "STARTING YOUR MASTERNODE (Windows)"
 Omit the chapter "Test and Troubleshooting" in the official setup guide.
+```
