@@ -39,7 +39,7 @@ crc1 getinfo,
 crc1 mnsync status, 
 crc1 getblockcount
 If you wish the make use of watch you need to include the path to the conf-file together with crowdcoin-cli
-eg. watch crowdcoin-cli -conf=/etc/masternodes/crowd_n1.conf mnsync
+eg. watch crowdcoin-cli -conf=/etc/masternodes/crowd_n1.conf mnsync status
 
 Wait until "crc1 mnsync status" output is like 
 {
