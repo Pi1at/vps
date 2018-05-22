@@ -18,16 +18,17 @@ Step 5) get current addnodes from https://www.cryptopia.co.nz/CoinInfo, type CRC
 		click on "Connections" of Crowdcoin. 
 		Select the addnodes show on the left into the clipboard, paste them with into the crowd_n1.conf, 
 		save the conf-file
-Step 6) To activate the masternode type: activate_masternodes_crowd
-Step 7) To activate Sentinel 
+Step 6) To activate the masternode type: activate_masternodes_crowd and wait for the new MN to be fully synced
+Step 7) Continue with the official setup guide at page 6 "STARTING YOUR MASTERNODE (Windows)" and come back here
+Step 8) To activate Sentinel 
 		Type: export SENTINEL_CONFIG=/usr/share/sentinel/crowd1_sentinel.conf; /usr/share/sentinelenv/bin/python /usr/share/sentinel/bin/sentinel.py
-Step 8) If it works without error, add that command as cronjob: 
+Step 9) If it works without error, add that command as cronjob: 
 		Type: crontab -e 
 		and place the string below in one line at the bottom of the file:
 		Type: * * * * * export SENTINEL_CONFIG=/usr/share/sentinel/crowd1_sentinel.conf; /usr/share/sentinelenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log
-Step 9) to make the command line interface (crowdcoin-cli) easier accessible add the string below to your .bashrc 
+Step 10) to make the command line interface (crowdcoin-cli) easier accessible add the string below to your .bashrc 
 		type: echo "alias crc1='crowdcoin-cli -conf=/etc/masternodes/crowd_n1.conf $1'" >> ~/.bashrc
-Step 10) to activate the alias added in step 9) type: . ~/.bashrc
+Step 11) to activate the alias added in step 9) type: . ~/.bashrc
 Done!
 
 Configuration files are in: /etc/masternodes
