@@ -19,7 +19,8 @@ Step 5) get current addnodes from https://www.cryptopia.co.nz/CoinInfo, type CRC
 		Select the addnodes show on the left into the clipboard, paste them with into the crowd_n1.conf, 
 		save the conf-file
 Step 6) To activate the masternode type: activate_masternodes_crowd and wait for the new MN to be fully synced
-Step 7) Continue with the official setup guide at page 6 "STARTING YOUR MASTERNODE (Windows)" and come back here
+Step 7) Continue with the official setup guide at page 6 "STARTING YOUR MASTERNODE (Windows)" and come back here.
+		Omit the chapter "Test and Troubleshooting" in the official setup guide.
 Step 8) To activate Sentinel 
 		Type: export SENTINEL_CONFIG=/usr/share/sentinel/crowd1_sentinel.conf; /usr/share/sentinelenv/bin/python /usr/share/sentinel/bin/sentinel.py
 Step 9) If it works without error, add that command as cronjob: 
@@ -53,7 +54,4 @@ Wait until "crc1 mnsync status" output is like
   "IsSynced": true,
   "IsFailed": false
 }
-
-Continue with the official setup guide at page 6 "STARTING YOUR MASTERNODE (Windows)"
-Omit the chapter "Test and Troubleshooting" in the official setup guide.
 ```
