@@ -274,7 +274,6 @@ function create_mn_configuration() {
 
         # always return to the script root
         cd ${SCRIPTPATH}
-
         # create one config file per masternode
         for NUM in $(seq 1 ${count}); do
         PASS=$(date | md5sum | cut -c1-24)
@@ -600,6 +599,7 @@ function build_mn_from_source() {
 
         # if it's not available after compilation, theres something wrong
         if [ ! -f ${MNODE_DAEMON} ]; then
+                echo ${MNODE_DAEMON}
                 echo "COMPILATION FAILED! Please open an issue at https://github.com/masternodes/vps/issues. Thank you!"
                 exit 1
         fi
@@ -650,6 +650,13 @@ function final_call() {
 # /* no parameters, create the required network configuration. IPv6 is auto.  */
 #
 function prepare_mn_interfaces() {
+
+if [ "${net}" -ne 4 ]; then prepare_mn_interfaces1
+fi
+}
+
+function prepare_mn_interfaces1() {
+
 
     # this allows for more flexibility since every provider uses another default interface
     # current default is:
