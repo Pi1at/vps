@@ -1,0 +1,11 @@
+#!/bin/bash   
+
+add-apt-repository ppa:bitcoin/bitcoin -y
+apt-get update && apt-get install libdb4.8-dev libdb4.8++-dev libminiupnpc-dev -y
+chmod u+x autogen.sh
+chmod u+x share/genbuild.sh
+./autogen.sh
+#./configure --disable-dependency-tracking --enable-tests=no --without-gui --without-miniupnpc --with-incompatible-bdb CFLAGS="-march=native" LIBS="-lcurl -lssl -lcrypto -lz"
+./configure
+make all
+make install
