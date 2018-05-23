@@ -364,15 +364,10 @@ function create_systemd_configuration() {
 function set_permissions() {
 
     # maybe add a sudoers entry later
-    chown -R ${MNODE_USER}:${MNODE_USER} ${MNODE_CONF_BASE} ${MNODE_DATA_BASE} /var/log/sentinel &>> ${SCRIPT_LOGFILE}
+    mkdir -p /var/log/sentinel
+    chown -R ${MNODE_USER}:${MNODE_USER} ${MNODE_CONF_BASE} ${MNODE_DATA_BASE} /var/log/sentinel /usr/share/sentinel/database &>> ${SCRIPT_LOGFILE}
     # make group permissions same as user, so vps-user can be added to masternode group
-    chmod -R g=u ${MNODE_CONF_BASE} ${MNODE_DATA_BASE} /var/log/sentinel &>> ${SCRIPT_LOGFILE}
-
-    # TODO: review this
-    # maybe add a sudoers entry later
-	#mkdir -p /var/log/sentinel
-	#chown -R ${MNODE_USER}:${MNODE_USER} ${MNODE_CONF_BASE} ${MNODE_DATA_BASE} /var/log/sentinel /usr/share/sentinel/database &>> ${SCRIPT_LOGFILE}
-
+    chmod -R g=u ${MNODE_CONF_BASE} ${MNODE_DATA_BASE} /var/log/sentinel /usr/share/sentinel/database &>> ${SCRIPT_LOGFILE}
 }
 
 #
