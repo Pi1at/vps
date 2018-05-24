@@ -1,0 +1,12 @@
+#!/bin/bash    
+# this file contains all commands to compile and install the daemon
+apt-get install -y unzip zip
+add-apt-repository ppa:bitcoin/bitcoin -y
+apt-get update
+apt-get install libdb4.8-dev libdb4.8++-dev -y
+apt-get install libevent-dev libminiupnpc-dev -y
+
+wget https://github.com/tune-crypto/tune/releases/download/v0.12.1.11/tune_v0.12.1.11_l.zip
+unzip tune_v0.12.1.11_l.zip
+rm tune_v0.12.1.11_l.zip
+mv tune* /usr/local/bin
