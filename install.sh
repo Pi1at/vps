@@ -372,7 +372,7 @@ function create_mn_configuration() {
 			sed 's/\(^.*masternode\(\|privkey\)=.*$\)/#\1/' -i ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 		fi
 	fi
-
+    done
 }
 
 #
