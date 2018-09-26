@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # monkey patching b/c ...
 cp ../../config/achilles/rpcrawtxbuild.patch src/
 patch -p0 < src/rpcrawtxbuild.patch
