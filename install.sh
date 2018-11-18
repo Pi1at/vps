@@ -229,47 +229,6 @@ function create_sentinel_setup() {
 }
 
 #
-# /* no parameters, creates a sentinel config for a set of masternodes (one per masternode)  */
-#
-function create_sentinel_setup() {
-
-	# if code directory does not exists, we create it clone the src
-	if [ ! -d /usr/share/sentinel ]; then
-		cd /usr/share                                               &>> ${SCRIPT_LOGFILE}
-		git clone https://github.com/dashpay/sentinel.git sentinel  &>> ${SCRIPT_LOGFILE}
-		cd sentinel                                                 &>> ${SCRIPT_LOGFILE}
-		rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE}
-	else
-		echo "* Updating the existing sentinel GIT repo"
-		cd /usr/share/sentinel        &>> ${SCRIPT_LOGFILE}
-		git pull                      &>> ${SCRIPT_LOGFILE}
-		rm -f rm sentinel.conf        &>> ${SCRIPT_LOGFILE}
-	fi
-
-	# create a globally accessible venv and install sentinel requirements
-	virtualenv --system-site-packages /usr/share/sentinelvenv      &>> ${SCRIPT_LOGFILE}
-	/usr/share/sentinelvenv/bin/pip install -r requirements.txt    &>> ${SCRIPT_LOGFILE}
-
-    # create one sentinel config file per masternode
-	for NUM in $(seq 1 ${count}); do
-	    if [ ! -f "/usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf" ]; then
-	         echo "* Creating sentinel configuration for ${CODENAME} masternode number ${NUM}" &>> ${SCRIPT_LOGFILE}
-		     echo "dash_conf=${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf"   > /usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf
-             echo "network=mainnet"                                         >> /usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf
-             echo "db_name=database/${CODENAME}_${NUM}_sentinel.db"         >> /usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf
-             echo "db_driver=sqlite"                                        >> /usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf
-        fi
-	done
-
-    echo "Generated a Sentinel config for you. To activate Sentinel run"
-    echo "export SENTINEL_CONFIG=${MNODE_CONF_BASE}/${CODENAME}${NUM}_sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py"
-    echo ""
-    echo "If it works, add the command as cronjob:  "
-    echo "* * * * * export SENTINEL_CONFIG=${MNODE_CONF_BASE}/${CODENAME}${NUM}_sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log"
-
-}
-
-#
 # /* no parameters, creates a minimal set of firewall rules that allows INBOUND masternode p2p & SSH ports */
 #
 function configure_firewall() {
